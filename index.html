@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Zone IT &amp; CCTV | Computer, Network &amp; CCTV Services</title>
+<meta name="description" content="Professional IT support with 10+ years of experience: computer & laptop repair, networking, CCTV installation, Microsoft 365, data backup and on-site or remote assistance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-alt:#f4f7fb;
+    --ink:#0f1b2d;
+    --muted:#5b6b82;
+    --line:#e3e9f1;
+    --brand:#0b63f6;
+    --brand-dark:#0848b5;
+    --accent:#14c4a3;
+    --dark:#0a1424;
+    --radius:16px;
+    --shadow:0 10px 30px rgba(15,27,45,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .container{width:min(1160px,100% - 32px);margin-inline:auto}
+  section{padding:88px 0}
+  .eyebrow{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin-bottom:12px}
+  h1,h2,h3{line-height:1.2;letter-spacing:-.02em}
+  h2{font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:16px}
+  .lead{color:var(--muted);font-size:1.08rem;max-width:640px}
+  .section-head{text-align:center;margin-bottom:52px}
+  .section-head .lead{margin-inline:auto}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:.98rem;transition:.2s;border:2px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--brand);color:#fff}
+  .btn-primary:hover{background:var(--brand-dark);transform:translateY(-2px)}
+  .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+  .btn-wa{background:#25d366;color:#fff}
+  .btn-wa:hover{background:#1eb257;transform:translateY(-2px)}
+
+  /* Nav */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;transition:.25s;background:transparent}
+  header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 20px rgba(0,0,0,.06);backdrop-filter:blur(8px)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem;color:#fff}
+  header.scrolled .logo{color:var(--ink)}
+  .logo-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{color:rgba(255,255,255,.9);font-weight:500;font-size:.95rem}
+  header.scrolled .nav-links a{color:var(--ink)}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-links .btn{padding:10px 20px;color:#fff !important}
+  .menu-btn{display:none;background:none;border:0;color:#fff;cursor:pointer}
+  header.scrolled .menu-btn{color:var(--ink)}
+
+  /* Hero */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;padding:120px 0 80px;
+    background:linear-gradient(110deg,rgba(6,14,28,.94) 0%,rgba(8,30,70,.82) 55%,rgba(8,30,70,.55) 100%),
+      url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat,#0a1424}
+  .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(2.3rem,5.5vw,4rem);font-weight:800;margin-bottom:20px}
+  .hero h1 span{background:linear-gradient(90deg,#4da3ff,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{font-size:1.15rem;color:rgba(255,255,255,.82);max-width:580px;margin-bottom:34px}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(20,196,163,.15);border:1px solid rgba(20,196,163,.4);color:#7ff0d9;padding:7px 14px;border-radius:999px;font-size:.85rem;font-weight:600;margin-bottom:22px}
+  .badge i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(20,196,163,.25)}
+  .hero-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(10px);border-radius:20px;padding:28px}
+  .hero-card h3{font-size:1.05rem;margin-bottom:18px}
+  .hero-card ul{list-style:none;display:grid;gap:14px}
+  .hero-card li{display:flex;gap:12px;align-items:flex-start;color:rgba(255,255,255,.88);font-size:.96rem}
+  .tick{flex:none;width:22px;height:22px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#06281f;font-size:.75rem;font-weight:800}
+
+  /* Stats */
+  .stats{background:var(--dark);color:#fff;padding:44px 0}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+  .stat b{display:block;font-size:2.2rem;font-weight:800;background:linear-gradient(90deg,#4da3ff,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{color:rgba(255,255,255,.7);font-size:.92rem}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .about-img{position:relative}
+  .about-img img{border-radius:var(--radius);box-shadow:var(--shadow);aspect-ratio:4/5;object-fit:cover;width:100%;background:var(--bg-alt)}
+  .exp-chip{position:absolute;right:-18px;bottom:30px;background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:18px 22px;display:flex;align-items:center;gap:14px}
+  .exp-chip b{font-size:2rem;color:var(--brand);line-height:1}
+  .exp-chip span{font-size:.88rem;color:var(--muted);line-height:1.3}
+  .about p{color:var(--muted);margin-bottom:16px}
+  .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .pill{background:var(--bg-alt);border:1px solid var(--line);padding:8px 14px;border-radius:999px;font-size:.88rem;font-weight:500}
+
+  /* Services */
+  .services{background:var(--bg-alt)}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .svc{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);transition:.25s;display:flex;flex-direction:column}
+  .svc:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .svc-img{height:190px;background:linear-gradient(135deg,#0b63f6,#14c4a3);overflow:hidden}
+  .svc-img img{width:100%;height:100%;object-fit:cover;transition:.4s}
+  .svc:hover .svc-img img{transform:scale(1.06)}
+  .svc-body{padding:24px 24px 28px}
+  .svc-icon{width:46px;height:46px;border-radius:12px;background:rgba(11,99,246,.1);color:var(--brand);display:grid;place-items:center;margin:-48px 0 14px;position:relative;background-color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.08)}
+  .svc h3{font-size:1.2rem;margin-bottom:12px}
+  .svc ul{list-style:none;display:grid;gap:8px}
+  .svc li{color:var(--muted);font-size:.95rem;padding-left:22px;position:relative}
+  .svc li::before{content:"";position:absolute;left:0;top:9px;width:10px;height:10px;border-radius:3px;background:var(--accent)}
+  .svc.featured{border:2px solid var(--brand)}
+  .tag{display:inline-block;background:var(--brand);color:#fff;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:999px;margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase}
+
+  /* CCTV band */
+  .cctv{background:linear-gradient(110deg,rgba(6,14,28,.95),rgba(6,14,28,.75)),url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=1920&q=80') center/cover,#0a1424;color:#fff}
+  .cctv-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .cctv .lead{color:rgba(255,255,255,.78)}
+  .cctv-features{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .cf{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:20px}
+  .cf svg{color:var(--accent);margin-bottom:10px}
+  .cf h4{font-size:1rem;margin-bottom:6px}
+  .cf p{font-size:.88rem;color:rgba(255,255,255,.68)}
+
+  /* Process */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:s}
+  .step{padding:28px;border-radius:var(--radius);border:1px solid var(--line);position:relative}
+  .step::before{counter-increment:s;content:"0" counter(s);font-size:2.4rem;font-weight:800;color:rgba(11,99,246,.15);display:block;margin-bottom:8px}
+  .step h3{font-size:1.08rem;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:.94rem}
+
+  /* Projects */
+  .projects{background:var(--bg-alt)}
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .proj{border-radius:var(--radius);overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 2px 0 rgba(0,0,0,.02)}
+  .proj-img{aspect-ratio:16/10;background:linear-gradient(135deg,#0848b5,#14c4a3);overflow:hidden}
+  .proj-img img{width:100%;height:100%;object-fit:cover}
+  .proj-body{padding:24px}
+  .proj-num{font-size:.8rem;font-weight:700;color:var(--brand);letter-spacing:.08em;text-transform:uppercase}
+  .proj h3{font-size:1.2rem;margin:6px 0 10px}
+  .proj p{color:var(--muted);font-size:.95rem}
+
+  /* Why */
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .why{text-align:center;padding:30px 20px}
+  .why-ic{width:62px;height:62px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(11,99,246,.12),rgba(20,196,163,.18));color:var(--brand)}
+  .why h3{font-size:1.05rem;margin-bottom:8px}
+  .why p{color:var(--muted);font-size:.93rem}
+
+  /* CTA / Contact */
+  .contact{background:var(--dark);color:#fff}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .contact .lead{color:rgba(255,255,255,.72)}
+  .c-list{list-style:none;margin:30px 0;display:grid;gap:18px}
+  .c-list li{display:flex;gap:14px;align-items:center}
+  .c-ic{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.08);display:grid;place-items:center;color:var(--accent);flex:none}
+  .c-list small{display:block;color:rgba(255,255,255,.55);font-size:.8rem}
+  .form{background:#fff;color:var(--ink);border-radius:20px;padding:32px}
+  .form h3{margin-bottom:6px}
+  .form > p{color:var(--muted);font-size:.93rem;margin-bottom:20px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px}
+  .form input,.form select,.form textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:.95rem;margin-bottom:14px;background:#fff;color:var(--ink)}
+  .form input:focus,.form select:focus,.form textarea:focus{outline:2px solid rgba(11,99,246,.3);border-color:var(--brand)}
+  .form textarea{min-height:110px;resize:vertical}
+  .form .btn{width:100%;justify-content:center}
+
+  footer{background:#060d18;color:rgba(255,255,255,.6);padding:28px 0;font-size:.9rem}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .foot a:hover{color:#fff}
+
+  .wa-float{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.45);z-index:60;transition:.2s}
+  .wa-float:hover{transform:scale(1.08)}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:.7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:980px){
+    .hero-grid,.about-grid,.cctv-grid,.contact-grid{grid-template-columns:1fr}
+    .svc-grid,.proj-grid{grid-template-columns:1fr 1fr}
+    .steps,.why-grid,.stats-grid{grid-template-columns:1fr 1fr}
+    .hero-card{display:none}
+    .exp-chip{right:12px}
+  }
+  @media (max-width:760px){
+    section{padding:64px 0}
+    .menu-btn{display:block}
+    .nav-links{position:absolute;top:74px;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:8px 16px 16px;box-shadow:0 10px 20px rgba(0,0,0,.08);display:none}
+    .nav-links.open{display:flex}
+    .nav-links a{color:var(--ink) !important;padding:12px 0;width:100%;border-bottom:1px solid var(--line)}
+    .nav-links .btn{margin-top:10px;justify-content:center;border:0}
+    .svc-grid,.proj-grid,.cctv-features,.row{grid-template-columns:1fr}
+  }
+  @media (max-width:480px){
+    .steps,.why-grid{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none !important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="container nav">
+    <a href="#" class="logo">
+      <span class="logo-mark">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </span>
+      Tech Zone IT &amp; CCTV
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#cctv">CCTV</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact" class="btn btn-primary">Get Support</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge"><i></i> On-site &amp; Remote IT Support Available</div>
+      <h1>Reliable IT Support that keeps your <span>business running</span></h1>
+      <p>Computer &amp; laptop repair, networking, CCTV installation, Microsoft 365 and data backup — professional, fast and cost-effective IT services for homes and businesses.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Book a Service
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#services" class="btn btn-ghost">View Services</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Why clients choose us</h3>
+      <ul>
+        <li><span class="tick">✓</span> 10+ years of hands-on IT experience</li>
+        <li><span class="tick">✓</span> Quick response &amp; minimal downtime</li>
+        <li><span class="tick">✓</span> CCTV supply, installation &amp; mobile viewing</li>
+        <li><span class="tick">✓</span> Transparent, affordable pricing</li>
+        <li><span class="tick">✓</span> Remote help or on-site visits</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="container stats-grid">
+    <div class="stat"><b>10+</b><span>Years Experience</span></div>
+    <div class="stat"><b>500+</b><span>Issues Resolved</span></div>
+    <div class="stat"><b>100+</b><span>Happy Clients</span></div>
+    <div class="stat"><b>24/7</b><span>Remote Assistance</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="container about-grid">
+    <div class="about-img reveal">
+      <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=80" alt="IT technician working on computer hardware" loading="lazy">
+      <div class="exp-chip"><b>10+</b><span>Years of<br>IT Experience</span></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">About Me</span>
+      <h2>Your trusted IT Support Professional</h2>
+      <p>I am an IT Support Professional with hands-on experience in providing technical support, troubleshooting hardware and software issues, and maintaining IT infrastructure. I help businesses and individuals resolve IT-related problems efficiently, minimize downtime, and ensure smooth day-to-day operations.</p>
+      <p>With <strong>10 years of experience</strong> in IT support and system administration, I have developed practical skills in troubleshooting computer hardware and software, managing user accounts, configuring networks, installing operating systems, setting up CCTV systems and resolving everyday IT issues.</p>
+      <p>My goal is to provide reliable, professional and cost-effective IT support tailored to each client's needs — whether on-site or remotely.</p>
+      <div class="pill-row">
+        <span class="pill">Hardware Repair</span>
+        <span class="pill">Windows</span>
+        <span class="pill">Networking</span>
+        <span class="pill">CCTV / NVR</span>
+        <span class="pill">Microsoft 365</span>
+        <span class="pill">Data Backup</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Services</span>
+      <h2>IT services I provide</h2>
+      <p class="lead">From a slow laptop to a full office network and security cameras — one reliable point of contact for all your IT needs.</p>
+    </div>
+    <div class="svc-grid">
+
+      <article class="svc reveal">
+        <div class="svc-img"><img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80" alt="Laptop repair" loading="lazy"></div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg></div>
+          <h3>Computer &amp; Laptop Support</h3>
+          <ul>
+            <li>Hardware and software troubleshooting</li>
+            <li>Windows installation and configuration</li>
+            <li>Upgrades and performance optimization</li>
+            <li>Printer and peripheral setup</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-img"><img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" alt="Network switch and cables" loading="lazy"></div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14 0M1.4 9a16 16 0 0 1 21.2 0M8.5 16.4a6 6 0 0 1 7 0"/><circle cx="12" cy="20" r="1"/></svg></div>
+          <h3>Network &amp; Connectivity</h3>
+          <ul>
+            <li>Wi-Fi and LAN troubleshooting</li>
+            <li>Router and switch configuration</li>
+            <li>Internet connectivity issues</li>
+            <li>Basic network maintenance</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="svc featured reveal">
+        <div class="svc-img"><img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80" alt="CCTV security camera" loading="lazy"></div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.75 12h3.63a1 1 0 0 1 .89 1.45l-2.27 4.55M2 7l12.5 5.2a1 1 0 0 0 1.3-.55l1.6-3.9a1 1 0 0 0-.55-1.3L4.4 1.3a1 1 0 0 0-1.3.55L2 4.5zM6 13v8M2 21h4"/></svg></div>
+          <span class="tag">Popular</span>
+          <h3>CCTV &amp; Security Cameras</h3>
+          <ul>
+            <li>CCTV / IP camera installation</li>
+            <li>DVR &amp; NVR setup and configuration</li>
+            <li>Mobile app remote viewing</li>
+            <li>Maintenance, repair &amp; upgrades</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Modern office workspace" loading="lazy"></div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>IT Infrastructure &amp; User Support</h3>
+          <ul>
+            <li>User account and access management</li>
+            <li>Email configuration and troubleshooting</li>
+            <li>Microsoft 365 support</li>
+            <li>Remote and on-site IT assistance</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-img"><img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=800&q=80" alt="Data storage hard drives" loading="lazy"></div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+          <h3>Data Backup &amp; Maintenance</h3>
+          <ul>
+            <li>Data backup and restoration</li>
+            <li>System maintenance and updates</li>
+            <li>Basic data migration</li>
+            <li>Preventive maintenance</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-img"><img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=800&q=80" alt="Remote IT support on laptop" loading="lazy"></div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+          <h3>Annual IT Maintenance (AMC)</h3>
+          <ul>
+            <li>Monthly / yearly support plans</li>
+            <li>Priority response for businesses</li>
+            <li>Regular health checks &amp; updates</li>
+            <li>Antivirus &amp; security setup</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CCTV -->
+<section id="cctv" class="cctv">
+  <div class="container cctv-grid">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--accent)">CCTV Solutions</span>
+      <h2>Protect your home &amp; business with professional CCTV</h2>
+      <p class="lead">Complete security camera solutions — from site survey and camera placement to installation, cabling and mobile viewing. Watch your premises live from anywhere on your phone.</p>
+      <div class="hero-ctas" style="margin-top:28px">
+        <a href="#contact" class="btn btn-primary">Get a Free Site Survey</a>
+      </div>
+    </div>
+    <div class="cctv-features reveal">
+      <div class="cf">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <h4>HD &amp; IP Cameras</h4><p>Analog HD and IP camera installation, indoor and outdoor.</p>
+      </div>
+      <div class="cf">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+        <h4>Mobile Viewing</h4><p>Live view and playback on your phone, anytime, anywhere.</p>
+      </div>
+      <div class="cf">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h.01M10 12h.01"/></svg>
+        <h4>DVR / NVR Setup</h4><p>Recording configuration, storage planning and backup.</p>
+      </div>
+      <div class="cf">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg>
+        <h4>Repair &amp; Maintenance</h4><p>Fix faulty cameras, cabling and existing CCTV systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">How It Works</span>
+      <h2>Simple, hassle-free support</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h3>Contact</h3><p>Call, WhatsApp or send a message describing your issue.</p></div>
+      <div class="step reveal"><h3>Diagnose</h3><p>I quickly assess the problem remotely or on-site.</p></div>
+      <div class="step reveal"><h3>Resolve</h3><p>The issue is fixed with clear, upfront pricing.</p></div>
+      <div class="step reveal"><h3>Support</h3><p>Ongoing help and preventive maintenance when you need it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Portfolio</span>
+      <h2>Recent work</h2>
+      <p class="lead">A few examples of the IT projects and support work I deliver.</p>
+    </div>
+    <div class="proj-grid">
+      <article class="proj reveal">
+        <div class="proj-img"><img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80" alt="Computer motherboard repair" loading="lazy"></div>
+        <div class="proj-body">
+          <span class="proj-num">Project 01</span>
+          <h3>Computer Troubleshooting</h3>
+          <p>Resolved hardware and software issues, performed system diagnostics, and restored computer functionality.</p>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-img"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80" alt="Office team at workstations" loading="lazy"></div>
+        <div class="proj-body">
+          <span class="proj-num">Project 02</span>
+          <h3>Office IT Setup</h3>
+          <p>Assisted with computer configuration, user setup, software installation, and workstation deployment.</p>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-img"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Server rack and network cabling" loading="lazy"></div>
+        <div class="proj-body">
+          <span class="proj-num">Project 03</span>
+          <h3>Network &amp; Connectivity</h3>
+          <p>Diagnosed network connectivity problems and assisted with network configuration and troubleshooting.</p>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-img"><img src="https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?auto=format&fit=crop&w=800&q=80" alt="Security camera on building" loading="lazy"></div>
+        <div class="proj-body">
+          <span class="proj-num">Project 04</span>
+          <h3>CCTV Installation</h3>
+          <p>Planned and installed a multi-camera CCTV system with DVR recording and mobile app remote viewing.</p>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-img"><img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80" alt="Laptop setup" loading="lazy"></div>
+        <div class="proj-body">
+          <span class="proj-num">Project 05</span>
+          <h3>Microsoft 365 &amp; Email</h3>
+          <p>Configured business email, Outlook and Microsoft 365 accounts for staff with secure access.</p>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-img"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" alt="Data backup and security" loading="lazy"></div>
+        <div class="proj-body">
+          <span class="proj-num">Project 06</span>
+          <h3>Data Backup &amp; Recovery</h3>
+          <p>Set up automated backups and restored critical files and data after system failure.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Why Choose Me</span>
+      <h2>Professional support you can count on</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why reveal">
+        <div class="why-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Fast Response</h3><p>Quick turnaround to keep downtime to a minimum.</p>
+      </div>
+      <div class="why reveal">
+        <div class="why-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Reliable &amp; Secure</h3><p>Your systems and data handled with care.</p>
+      </div>
+      <div class="why reveal">
+        <div class="why-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Cost-Effective</h3><p>Fair, transparent pricing with no hidden charges.</p>
+      </div>
+      <div class="why reveal">
+        <div class="why-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>On-site &amp; Remote</h3><p>Help at your location or instantly over the internet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="container contact-grid">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--accent)">Contact</span>
+      <h2>Need IT help? Let's fix it.</h2>
+      <p class="lead">Tell me about your issue or project and I'll get back to you quickly with a solution and quote.</p>
+      <ul class="c-list">
+        <li>
+          <span class="c-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div><small>Phone / WhatsApp</small><a href="tel:+923162371206">+92 316 2371206</a></div>
+        </li>
+        <li>
+          <span class="c-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><small>Service Area</small>On-site in Karachi · Other cities remotely or as per availability</div>
+        </li>
+      </ul>
+      <a href="https://wa.me/923162371206" target="_blank" rel="noopener" class="btn btn-wa">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4.9 2.9.8 3.4.7.5-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <form class="form reveal" id="contactForm">
+      <h3>Request a Service</h3>
+      <p>Fill in the form and your message will open in WhatsApp.</p>
+      <div class="row">
+        <div><label for="name">Your Name</label><input id="name" required placeholder="John Doe"></div>
+        <div><label for="phone">Phone</label><input id="phone" type="tel" required placeholder="03xx xxxxxxx"></div>
+      </div>
+      <label for="service">Service Needed</label>
+      <select id="service">
+        <option>Computer &amp; Laptop Support</option>
+        <option>Network &amp; Wi-Fi</option>
+        <option>CCTV Installation / Repair</option>
+        <option>Microsoft 365 / Email</option>
+        <option>Data Backup &amp; Recovery</option>
+        <option>Office IT Setup</option>
+        <option>Other</option>
+      </select>
+      <label for="msg">Describe the Issue</label>
+      <textarea id="msg" placeholder="e.g. My office Wi-Fi keeps disconnecting..."></textarea>
+      <button type="submit" class="btn btn-primary">Send Request</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <span>© <span id="yr"></span> Tech Zone IT &amp; CCTV. All rights reserved.</span>
+    <span><a href="#about">About</a> · <a href="#services">Services</a> · <a href="#cctv">CCTV</a> · <a href="#contact">Contact</a></span>
+  </div>
+</footer>
+
+<a href="https://wa.me/923162371206" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4.9 2.9.8 3.4.7.5-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
+</a>
+
+<script>
+  // ==== EDIT YOUR WHATSAPP NUMBER HERE (country code, no + or spaces) ====
+  const WHATSAPP = '923162371206';
+
+  const header = document.querySelector('header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll); onScroll();
+
+  const navLinks = document.getElementById('navLinks');
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    header.classList.add('scrolled');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Hide broken images so the gradient placeholder shows instead
+  document.querySelectorAll('img').forEach(img => img.addEventListener('error', () => img.style.visibility = 'hidden'));
+
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const v = id => document.getElementById(id).value.trim();
+    const text = `Hello, I need IT support.\n\nName: ${v('name')}\nPhone: ${v('phone')}\nService: ${v('service')}\nDetails: ${v('msg')}`;
+    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`, '_blank');
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
